@@ -72,15 +72,16 @@ var imgGalApp = (function(){
 								       var xhr = $.ajaxSettings.xhr() ;
 								       // set the onprogress event handler
 								       xhr.upload.onprogress = function(evt){ 
-								       	// console.log('progress', evt.loaded/evt.total*100) 
-								       		$(".progressBar").show();
-								       		$(progElemClass).find("div").css("width",evt.loaded/evt.total*100);
+								       		// console.log('progress', evt.loaded/evt.total*100) 
+								       		$(statData.progElemClass).show().find("div").css("width",evt.loaded/evt.total*100);
 								       } ;
 								       // set the onload event handler
 								       xhr.upload.onload = function(data){ 
-								       		$(progElemClass).find("div").css("width","100%");
-								       		$(".progressBar").hide();
-								       		// alert("asd");
+								       		 $(statData.progElemClass).find("div").css("width","100%");
+								       		 setTimeout(function(){
+								       		 	$(statData.progElemClass).find("div").css("width","0px");
+								       		 	$(statData.progElemClass).hide();
+								       		 },100);
 								       	 } ;
 								       // return the customized object
 								       return xhr ;
