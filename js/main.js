@@ -8,9 +8,11 @@ var imgGalApp = (function(){
 					imgUploadAr:'.imgUp',
 					progElemClass:'.progressBar',
 					formId:'#uploadimage',
-					ajaxProcessPage:'ajax_php_file.php'
+					ajaxProcessPage:'ajax_php_file.php',
+					serverCheckPage:'serverCheck.php'
 				},
-				currentFiles:[]
+				currentFiles:[],
+				currentGal:[]
 			};
 
 			var view = {
@@ -61,6 +63,7 @@ var imgGalApp = (function(){
 											{
 												var fileName = filteredFileArr[i];
 												fileHTML += "<div><img src='upload/" + fileName + "' /><div class='fileName'>"+ fileName +"</div></div>";
+												controller.updateClientGal(fileName);
 											}
 											$(".film").append(fileHTML);
 											var remains = normalizedStr.length - arrLen;
@@ -116,6 +119,8 @@ var imgGalApp = (function(){
 			var controller = {
 				init:function(){
 					view.init(model.appStatic);
+					this.checkServer();
+					this.populateGal();
 				},
 				setCurrentFiles:function(filesArr){
 					model.currentFiles = filesArr;
@@ -133,6 +138,51 @@ var imgGalApp = (function(){
 						}
 					}
 					return filteredArr;
+				},
+				checkServer:function(){
+
+					$.ajax({
+						url: model.appStatic.serverCheckPage, // Url to which the request is send
+						type: "POST",  
+						dataType:"json",           // Type of request to be send, called as method
+						contentType: false,       // The content type used when sending data to the server.
+						cache: false,             // To unable request pages to be cached
+						processData:false,        // To send DOMDocument or non processed data file it is set to false
+						success: function(data)   // A function to be called if request succeeds
+								{
+									//add to gallery the images which throw 1
+									
+									// for(var i=0;i<data.length)
+									for(var img in data)
+									{
+										var isThere = 0;
+										//(data[img]);
+										for(var i=0;i<model.currentGal.length;i++)
+										{
+											if(data[img]===model.currentGal[i])
+											{
+												isThere=1;
+											}
+
+										}
+										if(isThere === 0)
+										{
+											model.currentGal.push(data[img]);
+											$(".film").append('<div><img src="upload/' + data[img] + '" /><div>' + data[img] + '</div></div>');
+										}
+									}
+								}
+						
+					});
+					setTimeout(controller.checkServer,10000);
+				},
+				populateGal:function(){
+					$(".film img").each(function(){
+						model.currentGal.push($(this).attr('src').replace('upload/',""));
+					});
+				},
+				updateClientGal:function(fileName){
+					model.currentGal.push(fileName);
 				}
 			};
 
