@@ -64,6 +64,7 @@ var theOrderite = (function(){
 				// model.amntIdStatArr[i] = dataObj[i].amount;
 				// model.dateIdStatArr[i] = dataObj[i].orderDate;
 				model.currentSeq[i] = i;
+				model.lastFilArr[i] = i;
 				dataObj[i].paymentStatus = dataObj[i].paymentStatus.toLowerCase(); 
 			}
 		},
@@ -88,26 +89,39 @@ var theOrderite = (function(){
 				    tempFilter.splice(index, 1);
 				}
 			}
-			var tempFilterLen = tempFilter.length;
-
-			for(var i=0; i<len; i++)
+			if(tempFilter.length)
 			{
-				for(var j=0; j<tempFilterLen; j++)
-				{
+				var tempFilterLen = tempFilter.length;
 
-					if(data[dataSeq[i]].paymentStatus === tempFilter[j])
+				for(var i=0; i<len; i++)
+				{
+					for(var j=0; j<tempFilterLen; j++)
 					{
-						arr.push(dataSeq[i]);
+
+						if(data[dataSeq[i]].paymentStatus === tempFilter[j])
+						{
+							arr.push(dataSeq[i]);
+						}
 					}
-				}
+				}	
 			}
+			else
+			{
+				arr = dataSeq.deepCopy();
+			}
+			
+			
 			model.currentFilArr = arr;
 			this.renderUpdates();
 
 		},
+		sortingArr : function(sortMethod){
+			console.log(sortMethod);
+		},
 		renderUpdates:function(){
 			console.log(model.lastFilArr + " - " + model.currentFilArr)
 			model.lastFilArr = model.currentFilArr.deepCopy();
+
 		}
 
 	};
@@ -139,7 +153,16 @@ var theOrderite = (function(){
 			else
 			{
 				targetElm = event.target.children[0];
-				targetElm.checked = !targetElm.checked;
+				if(targetElm.type === "checkbox")
+				{
+					targetElm.checked = !targetElm.checked;
+				}
+				else
+				{
+					// alert("asd")
+					targetElm.checked = true;
+
+				}
 			}
 
 			if(targetElm.name === "criteria")
@@ -155,7 +178,14 @@ var theOrderite = (function(){
 			}
 			else
 			{
-
+				if(targetElm.checked === true)
+				{
+					controller.sortingArr(targetElm.value);
+				}
+				else
+				{
+					controller.sortingArr(targetElm.value);
+				}
 			}
 		},
 		renderUpdates:function(){

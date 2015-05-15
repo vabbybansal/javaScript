@@ -22,8 +22,8 @@
 			<div class='sorting lf cf'>
 				<div>Sorting</div>
 				<div id="_sortDelegate">
-					<div><input type="radio" name="sorting" value="paymentid"> Payment Id</div>
-					<div><input type="radio" name="sorting" value="orderdate"> Order Date</div>
+					<div><input type="radio" name="sorting" value="paymentId"> Payment Id</div>
+					<div><input type="radio" name="sorting" value="orderDate"> Order Date</div>
 					<div><input type="radio" name="sorting" value="amount"> Amount</div>
 					<!-- <div><input type="radio" name="sorting" value="refunded"> Refunded</div>
 					<div><input type="radio" name="sorting" value="dropped"> Dropped</div> -->
