@@ -1,0 +1,9 @@
+/*RESET*/
+*{margin:0;padding:0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+.container{width:990px;margin:0 auto;}
+#theOrderite>table{width:100%;}
+#theOrderite>table, #theOrderite td, #theOrderite th{border:1px solid #ccc;border-collapse:collapse;}
+#theOrderite td, #theOrderite th{text-align:center;padding:7px 7px;}
+.lf{float:left;}
+.cf:after{content:"";display:block;clear:both;}
+#controlPanel>div>div>div{padding:3px 6px;cursor:pointer;}
