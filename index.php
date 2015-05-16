@@ -8,9 +8,9 @@
 <body>	
 	
 	<div class="container">
-		<div id="controlPanel">
+		<div id="controlPanel" class="cf">
 			<div class='filters lf cf'>
-				<div>Filters</div>
+				<div>Filters</div><hr>
 				<div id="_filDelegate">
 					<div><input type="checkbox" name="criteria" value="initiated"> Initiated</div>
 					<div><input type="checkbox" name="criteria" value="failed"> Failed</div>
@@ -20,7 +20,7 @@
 				</div>
 			</div>
 			<div class='sorting lf cf'>
-				<div>Sorting</div>
+				<div>Sorting</div><hr>
 				<div id="_sortDelegate">
 					<div><input type="radio" name="sorting" value="paymentId"> Payment Id</div>
 					<div><input type="radio" name="sorting" value="orderDate"> Order Date</div>
@@ -29,6 +29,7 @@
 					<div><input type="radio" name="sorting" value="dropped"> Dropped</div> -->
 				</div>
 			</div>
+			<h1 style="color:#666;margin-left:10px;font-size:80px;text-align:right;">The Orderite</h1>
 		</div>
 		<div id="theOrderite">
 			
