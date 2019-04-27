@@ -1,0 +1,19 @@
+/*RESET*/
+*{margin:0;padding:0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+body{background-color:#fdfdfd;}
+.container{width:990px;margin:0 auto;}
+#controlPanel>div{  padding: 5px 5px; border: 1px solid #ccc;  margin: 6px 5px;background:#ddd;}
+#controlPanel>div>div:first-child{font-size:18px;}
+#theOrderite>table{width:100%;}
+#theOrderite th{color:#333;}
+#theOrderite>table, #theOrderite td, #theOrderite th{border:1px solid #ccc;}
+#theOrderite td, #theOrderite th{text-align:center;padding:7px 7px;}
+.lf{float:left;}
+.cf:after{content:"";display:block;clear:both;}
+#controlPanel>div>div>div{padding:3px 6px;cursor:pointer;}
+#theOrderite tr{-webkit-transition: -webkit-transform 1000ms, opacity 2000ms;-o-transition: -o-transform 1000ms, opacity 2000ms;transition: transform 1000ms, opacity 2000ms;background-color:#eee;}
+tr.aniShow{-webkit-transform: -webkit-translate(0%,0%);-ms-transform: -ms-translate(0%,0%);-o-transform: -o-translate(0%,0%);transform: translate(0%,0%);opacity:1;}
+tr.aniHide{-webkit-transform: -webkit-translate(130px,0px);-ms-transform: -ms-translate(130px,0px);-o-transform: -o-translate(130px,0px);transform: translate(1300px,0px);opacity:0;}
+
+.noDelay tr{-webkit-transition: none !important;-o-transition: none !important;transition:none !important}
+
